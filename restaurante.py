@@ -8,52 +8,50 @@ print("• Tamanho P de Bife Acebolado (BA) custa 16 reais e o Filé de Frango (
     "• Tamanho M de Bife Acebolado (BA) custa 18 reais e o Filé de Frango (FF) custa 17 reais;\n" \
     "• Tamanho G de Bife Acebolado (BA) custa 22 reais e o Filé de Frango (FF) custa 21 reais;")
 
-#variaveis dos sabores
-onion = ['ba', 'BA']
-chiken = ['ff', 'FF']
-
+#variaveis do contador
 total = 0
 conter = 0
 
 while True:
     #sabor da marmita
-    flavor = str(input("Qual o sabor desejado (BA/FF): "))
+    flavor = str(input("Qual o sabor desejado (BA/FF): ")).upper()
     while True:
-        if flavor not in onion and flavor not in chiken: #se o sabor nao for uma opçao do cardapio retorna a pergunta
-            flavor = str(input("Qual o sabor desejado (BA/FF): "))
+        # if flavor not in onion and flavor not in chiken: #se o sabor nao for uma opçao do cardapio retorna a pergunta
+        if flavor not in ('BA', 'FF'): #se o sabor nao for uma opçao do cardapio retorna a pergunta
+            flavor = str(input("Qual o sabor desejado (BA/FF): ")).upper()
         else:
             break
 
     #tamanho da marmita
-    size = str(input("Qual será o tamanho da marmita (P/M/G): "))
+    size = str(input("Qual será o tamanho da marmita (P/M/G): ")).upper()
     while True:
-        if size not in ('P', 'p', 'M', 'm', 'G', 'g'): #se o tamanho nao for uma opçao do cardapio retorna a pergunta
-            size = str(input("Qual será o tamanho da marmita (P/M/G): "))
+        if size not in ('P', 'M', 'G'): #se o tamanho nao for uma opçao do cardapio retorna a pergunta
+            size = str(input("Qual será o tamanho da marmita (P/M/G): ")).upper()
         else:
             break
 
     #condição aninhada do valor dos sabores de acordo com o tamanho
-    if size in ('P', 'p'):
-        if flavor in onion:
+    if size in ('P'):
+        if flavor in 'BA':
             total = 16.00
-        elif flavor in chiken:
+        elif flavor in 'FF':
             total = 15.00
-    elif size in ('M', 'm'):
-        if flavor in onion:
+    elif size in ('M'):
+        if flavor in 'BA':
             total = 18.00
-        elif flavor in chiken:
+        elif flavor in 'FF':
             total = 17.00
-    elif size in ('G', 'g'):
-        if flavor in onion:
+    elif size in ('G'):
+        if flavor in 'BA':
             total = 22.00
-        elif flavor in chiken:
+        elif flavor in 'FF':
             total = 21.00
     
     #acumulador responsavel por calcular o valor total
     conter = conter + total
 
     #mensagem do pedido
-    if flavor in onion:
+    if flavor in 'ba':
         print(f'Você pediu um Beef Acebolado no tamanho {size.upper()}: R$ {total}')
     else:
         print(f'Você pediu um Filé de Frango no tamanho {size.upper()}: R$ {total}')
